@@ -1,0 +1,15 @@
+{
+  "name": "ecommerce-suite-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:customer": "npm --prefix apps/customer-app run dev",
+    "dev:admin": "npm --prefix apps/admin-app run dev",
+    "dev": "npx concurrently \"npm run dev:backend\" \"npm run dev:customer\" \"npm run dev:admin\"",
+    "dev:all": "npx concurrently \"npm run dev:backend\" \"npm run dev:customer\" \"npm run dev:admin\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
