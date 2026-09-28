@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ShieldCheck, DollarSign, ShoppingBag, Clock, AlertTriangle, Package, CreditCard, Activity, ExternalLink, LogOut, User } from 'lucide-react';
+import { ShieldCheck, DollarSign, ShoppingBag, Clock, AlertTriangle, Package, CreditCard, Activity, LogOut, User } from 'lucide-react';
 import { formatRupiah } from './utils/formatters';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { useAdminStats } from './api/queries';
@@ -11,7 +11,7 @@ import { RealtimeOrderMonitor } from './components/RealtimeOrderMonitor';
 import { ReceiptModal } from './components/ReceiptModal';
 import { AdminLogin } from './components/AdminLogin';
 
-const CUSTOMER_APP_URL = import.meta.env.VITE_CUSTOMER_APP_URL || 'http://localhost:5173';
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,16 +34,7 @@ function AdminNavbar() {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-          <a
-            href={CUSTOMER_APP_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-secondary"
-            style={{ fontSize: '0.8rem', padding: '0.4rem 0.75rem', background: 'rgba(6, 182, 212, 0.12)', border: '1px solid rgba(6, 182, 212, 0.3)', color: 'var(--accent-cyan)' }}
-            title="Open Customer Storefront in new tab"
-          >
-            <ExternalLink size={14} /> <span className="hide-on-mobile">Buka Customer App</span>
-          </a>
+
 
           {user && (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { io } from 'socket.io-client';
-import { Search, Sparkles, ShoppingBag, Receipt, ExternalLink, Bell, LogIn, LogOut, User, Home, LayoutGrid, ShieldCheck } from 'lucide-react';
+import { Search, Sparkles, ShoppingBag, Receipt, Bell, LogIn, LogOut, User, Home, LayoutGrid } from 'lucide-react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { CartProvider, useCart } from './context/CartContext';
 import { useProducts, useCategories, useMyOrders } from './api/queries';
@@ -13,7 +13,7 @@ import { LoginModal } from './components/LoginModal';
 import { formatRupiah } from './utils/formatters';
 
 const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5001';
-const ADMIN_APP_URL = import.meta.env.VITE_ADMIN_APP_URL || 'http://localhost:5174';
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,16 +37,7 @@ function CustomerNavbar({ onOpenOrders, onOpenLogin }) {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-          <a
-            href={ADMIN_APP_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-secondary hide-on-mobile"
-            style={{ fontSize: '0.8rem', padding: '0.4rem 0.8rem', background: 'rgba(245, 158, 11, 0.12)', border: '1px solid rgba(245, 158, 11, 0.3)', color: 'var(--accent-amber)' }}
-            title="Open Admin Backoffice in new tab"
-          >
-            <ExternalLink size={14} /> Buka Admin App
-          </a>
+
 
           <button className="btn btn-secondary hide-on-mobile" onClick={onOpenOrders} title="View My Orders & Receipts">
             <Receipt size={18} />
@@ -384,17 +375,6 @@ function MainCustomerView() {
           {totalItems > 0 && <span className="mobile-badge">{totalItems}</span>}
         </button>
 
-        <a
-          href={ADMIN_APP_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="mobile-nav-item"
-          title="Admin Backoffice"
-          style={{ color: 'var(--accent-amber)' }}
-        >
-          <ShieldCheck size={19} />
-          <span>Admin</span>
-        </a>
 
         <button
           className="mobile-nav-item"

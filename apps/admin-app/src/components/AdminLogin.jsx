@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { ShieldCheck, Mail, Lock, Eye, EyeOff, ArrowRight, ExternalLink, AlertCircle } from 'lucide-react';
+import { ShieldCheck, Mail, Lock, Eye, EyeOff, ArrowRight, AlertCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-
-const CUSTOMER_APP_URL = import.meta.env.VITE_CUSTOMER_APP_URL || 'http://localhost:5173';
 
 export function AdminLogin() {
   const { login } = useAuth();
-  const [email, setEmail] = useState('admin@store.com');
-  const [password, setPassword] = useState('Admin1234');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -28,7 +26,6 @@ export function AdminLogin() {
 
   const handleSelectDemoUser = (demoEmail) => {
     setEmail(demoEmail);
-    setPassword('Admin1234');
     setErrorMsg('');
   };
 
@@ -159,20 +156,17 @@ export function AdminLogin() {
           </div>
 
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
-              <label
-                style={{
-                  fontSize: '0.825rem',
-                  fontWeight: 600,
-                  color: 'var(--text-muted)',
-                }}
-              >
-                Password Admin
-              </label>
-              <span style={{ fontSize: '0.75rem', color: 'var(--accent-amber)', fontWeight: 600 }}>
-                Default: Admin1234
-              </span>
-            </div>
+            <label
+              style={{
+                display: 'block',
+                fontSize: '0.825rem',
+                fontWeight: 600,
+                color: 'var(--text-muted)',
+                marginBottom: '0.4rem',
+              }}
+            >
+              Password Admin
+            </label>
             <div style={{ position: 'relative' }}>
               <Lock
                 size={18}
@@ -252,7 +246,7 @@ export function AdminLogin() {
         {/* Demo Fast Pick */}
         <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-glass)' }}>
           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.75rem', fontWeight: 600 }}>
-            PILIH AKUN ADMIN TERDAFTAR (KLIK UNTUK AUTO-FILL):
+            PILIH EMAIL ADMIN TERDAFTAR:
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             <button
@@ -303,23 +297,6 @@ export function AdminLogin() {
           </div>
         </div>
 
-        {/* Back to Customer App */}
-        <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
-          <a
-            href={CUSTOMER_APP_URL}
-            style={{
-              fontSize: '0.85rem',
-              color: 'var(--accent-cyan)',
-              textDecoration: 'none',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-            }}
-          >
-            <span>Buka Customer Storefront HeMart</span>
-            <ExternalLink size={14} />
-          </a>
-        </div>
       </div>
     </div>
   );

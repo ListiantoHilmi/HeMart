@@ -4,8 +4,8 @@ import { useAuth } from '../context/AuthContext';
 
 export function LoginModal({ isOpen, onClose, onSuccess }) {
   const { login } = useAuth();
-  const [email, setEmail] = useState('budi@gmail.com');
-  const [password, setPassword] = useState('Customer1234');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,7 +30,6 @@ export function LoginModal({ isOpen, onClose, onSuccess }) {
 
   const handleSelectDemoUser = (demoEmail) => {
     setEmail(demoEmail);
-    setPassword('Customer1234');
     setErrorMsg('');
   };
 
@@ -125,14 +124,9 @@ export function LoginModal({ isOpen, onClose, onSuccess }) {
           </div>
 
           <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-              <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)' }}>
-                Password Customer
-              </label>
-              <span style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
-                Default: Customer1234
-              </span>
-            </div>
+            <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+              Password Customer
+            </label>
             <div style={{ position: 'relative' }}>
               <Lock size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input
@@ -200,7 +194,7 @@ export function LoginModal({ isOpen, onClose, onSuccess }) {
         <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid var(--border-glass)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '0.65rem', fontWeight: 600 }}>
             <UserCheck size={14} style={{ color: 'var(--accent-cyan)' }} />
-            <span>PILIH AKUN CUSTOMER TERDAFTAR:</span>
+            <span>PILIH EMAIL CUSTOMER TERDAFTAR:</span>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
